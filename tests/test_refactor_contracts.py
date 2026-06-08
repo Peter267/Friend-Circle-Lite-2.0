@@ -39,6 +39,13 @@ class RefactorContractsTest(unittest.TestCase):
                 workflow = workflow_path.read_text(encoding="utf-8")
                 self.assertIn("FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true", workflow)
 
+    def test_email_issue_workflow_uses_official_github_script_action(self):
+        workflow = Path(".github/workflows/deal_subscribe_issue.yml").read_text(encoding="utf-8")
+
+        self.assertIn("uses: actions/github-script@v7", workflow)
+        self.assertNotIn("uses: actions-cool/issues-helper@v3", workflow)
+        self.assertIn("permissions:\n      issues: write", workflow)
+
     def test_static_index_is_standalone_dashboard_with_view_switch(self):
         html = Path("static/index.html").read_text(encoding="utf-8")
 
