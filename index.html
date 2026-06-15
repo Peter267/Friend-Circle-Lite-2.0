@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="googlebot" content="noindex" />
+    <title>友链清册</title>
+    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://chinese-fonts-cdn.deno.dev/packages/jhlst/dist/京華老宋体v1_007/result.css"
+    />
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700;900&family=ZCOOL+XiaoWei&display=swap");
+
+      :root {
+        --ink: #172629;
+        --ink-soft: #41565a;
+        --muted: #718486;
+        --paper: #e7f3ff;
+        --paper-strong: #ffffff;
+        --line: #cadbd4;
+        --mist: #e5eee9;
+        --cyan: #147d80;
+        --cyan-deep: #0c5b60;
+        --leaf: #2b7a4e;
+        --amber: #ad7a21;
+        --red: #b7443d;
+        --blue: #466f9f;
+        --shadow: 0 18px 42px rgba(24, 42, 43, 0.11);
+        --fine-shadow: 0 8px 22px rgba(24, 42, 43, 0.08);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        background: var(--paper);
+        scrollbar-color: rgba(12, 91, 96, 0.26) transparent;
+        scrollbar-width: thin;
+      }
+
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        border: 2px solid transparent;
+        border-radius: 999px;
+        background: rgba(12, 91, 96, 0.22);
+        background-clip: content-box;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: rgba(12, 91, 96, 0.34);
+        background-clip: content-box;
+      }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        color: var(--ink);
+        font-family: "KingHwa_OldSong", "Noto Serif SC", "Songti SC", "STSong", serif;
+        line-height: 1.55;
+        background:
+          linear-gradient(90deg, rgba(24, 42, 43, 0.035) 1px, transparent 1px) 0 0 / 38px 38px,
+          linear-gradient(180deg, rgba(24, 42, 43, 0.028) 1px, transparent 1px) 0 0 / 38px 38px,
+          var(--paper);
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -2;
+        background:
+          linear-gradient(115deg, rgba(20, 125, 128, 0.16), transparent 42%),
+          linear-gradient(245deg, rgba(173, 122, 33, 0.09), transparent 40%),
+          url("./bg-light.webp") center / cover no-repeat;
+        opacity: 0.34;
+      }
+
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.66), rgba(255, 255, 255, 0.82)),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.25), transparent 22%, transparent 78%, rgba(255, 255, 255, 0.22));
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button,
+      input {
+        font: inherit;
+      }
+
+      .shell {
+        position: relative;
+        z-index: 1;
+        width: min(1280px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 26px 0 58px;
+      }
+
+      .masthead {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 22px;
+        align-items: end;
+        padding: 20px 0 20px;
+        border-bottom: 3px double rgba(24, 34, 38, 0.28);
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--cyan-deep);
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0;
+      }
+
+      h1 {
+        margin: 5px 0 0;
+        font-family: "ZCOOL XiaoWei", "Noto Serif SC", serif;
+        font-size: clamp(2.25rem, 6vw, 5.6rem);
+        font-weight: 400;
+        letter-spacing: 0;
+        line-height: 0.95;
+      }
+
+      .mastnote {
+        max-width: 740px;
+        margin: 10px 0 0;
+        color: var(--ink-soft);
+        font-size: 1rem;
+      }
+
+      .mode-switch {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-width: 320px;
+        padding: 5px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.72);
+        box-shadow: var(--fine-shadow);
+        backdrop-filter: blur(12px);
+      }
+
+      .mode-button {
+        min-height: 46px;
+        border: 0;
+        border-radius: 6px;
+        background: transparent;
+        color: var(--ink-soft);
+        cursor: pointer;
+        font-weight: 700;
+        white-space: nowrap;
+        transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+      }
+
+      .mode-button:hover {
+        color: var(--cyan-deep);
+        transform: translateY(-1px);
+      }
+
+      .mode-button.active {
+        background: var(--cyan-deep);
+        color: #fff;
+      }
+
+      .dashboard {
+        display: grid;
+        align-items: start;
+        grid-template-columns: minmax(250px, 320px) minmax(0, 1fr);
+        gap: 16px;
+        margin-top: 18px;
+      }
+
+      .rail,
+      .board {
+        min-width: 0;
+      }
+
+      .panel {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.78);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(14px);
+      }
+
+      .rail {
+        display: grid;
+        gap: 12px;
+        align-content: start;
+      }
+
+      .time-panel {
+        padding: 16px;
+      }
+
+      .time-label {
+        color: var(--muted);
+        font-size: 0.78rem;
+        font-weight: 700;
+      }
+
+      .time-value {
+        display: block;
+        margin-top: 5px;
+        font-family: "ZCOOL XiaoWei", "Noto Serif SC", serif;
+        font-size: 1.3rem;
+      }
+
+      .metrics {
+        display: grid;
+        gap: 8px;
+      }
+
+      .metric {
+        position: relative;
+        overflow: hidden;
+        padding: 14px 16px;
+      }
+
+      .metric::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 5px;
+        height: 100%;
+        background: var(--cyan);
+      }
+
+      .metric:nth-child(2)::before {
+        background: var(--leaf);
+      }
+
+      .metric:nth-child(3)::before {
+        background: var(--amber);
+      }
+
+      .metric:nth-child(4)::before {
+        background: var(--red);
+      }
+
+      .metric-label {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        color: var(--muted);
+        font-size: 0.82rem;
+        font-weight: 700;
+      }
+
+      .metric-value {
+        display: block;
+        margin-top: 3px;
+        font-family: "ZCOOL XiaoWei", "Noto Serif SC", serif;
+        font-size: 2rem;
+        line-height: 1.1;
+      }
+
+      .toolbar {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 10px;
+        padding: 12px;
+      }
+
+      .search-wrap {
+        position: relative;
+      }
+
+      .search-wrap i {
+        position: absolute;
+        top: 50%;
+        left: 12px;
+        color: var(--muted);
+        transform: translateY(-50%);
+      }
+
+      .search {
+        width: 100%;
+        min-height: 44px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.86);
+        color: var(--ink);
+        padding: 10px 12px 10px 36px;
+        outline: none;
+      }
+
+      .search:focus {
+        border-color: var(--cyan);
+        box-shadow: 0 0 0 3px rgba(8, 127, 140, 0.12);
+      }
+
+      .filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+      }
+
+      .filter-button {
+        min-height: 34px;
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        background: rgba(255, 255, 255, 0.8);
+        color: var(--ink-soft);
+        cursor: pointer;
+        padding: 6px 10px;
+        font-size: 0.88rem;
+        transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+      }
+
+      .filter-button.active {
+        border-color: var(--cyan-deep);
+        background: var(--cyan-deep);
+        color: #fff;
+      }
+
+      .board {
+        display: grid;
+        align-content: start;
+        gap: 12px;
+      }
+
+      .board-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 14px 16px;
+      }
+
+      .board-title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 0;
+        margin: 0;
+        font-size: 1.08rem;
+      }
+
+      .board-title::before {
+        content: "";
+        width: 8px;
+        height: 22px;
+        border-radius: 999px;
+        background: var(--cyan);
+        box-shadow: 0 0 0 5px rgba(20, 125, 128, 0.12);
+        flex-shrink: 0;
+      }
+
+      .source-links {
+        display: flex;
+        gap: 10px;
+        color: var(--cyan-deep);
+        font-size: 0.86rem;
+        white-space: nowrap;
+      }
+
+      .content-grid {
+        display: grid;
+        align-items: start;
+        grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+        gap: 10px;
+      }
+
+      .link-card,
+      .article-card {
+        position: relative;
+        align-self: start;
+        min-width: 0;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.84);
+        box-shadow: var(--fine-shadow);
+        transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+      }
+
+      .link-card:hover,
+      .article-card:hover {
+        border-color: rgba(8, 127, 140, 0.45);
+        box-shadow: 0 18px 44px rgba(25, 38, 43, 0.13);
+        transform: translateY(-2px);
+      }
+
+      .link-card {
+        padding: 13px;
+      }
+
+      .link-main {
+        display: grid;
+        grid-template-columns: 44px minmax(0, 1fr);
+        gap: 10px;
+        align-items: center;
+      }
+
+      .avatar {
+        width: 44px;
+        height: 44px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--mist);
+        object-fit: cover;
+      }
+
+      .name {
+        display: block;
+        overflow: hidden;
+        color: var(--ink);
+        font-weight: 900;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .url {
+        display: block;
+        overflow: hidden;
+        margin-top: 2px;
+        color: var(--muted);
+        font-size: 0.78rem;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .badges {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 12px;
+      }
+
+      .icon-badge {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 28px;
+        height: 28px;
+        border: 1px solid rgba(24, 34, 38, 0.08);
+        border-radius: 999px;
+        background: var(--mist);
+        color: var(--ink-soft);
+        font-size: 0.76rem;
+        font-weight: 700;
+        cursor: help;
+      }
+
+      .icon-badge.good {
+        background: rgba(40, 120, 76, 0.11);
+        color: var(--leaf);
+      }
+
+      .icon-badge.warn {
+        background: rgba(174, 118, 25, 0.13);
+        color: var(--amber);
+      }
+
+      .icon-badge.bad {
+        background: rgba(190, 62, 56, 0.12);
+        color: var(--red);
+      }
+
+      .poem-background {
+        position: fixed;
+        bottom: calc(50% - 300px);
+        left: 50%;
+        z-index: 0;
+        width: 2000px;
+        color: #93a1a9;
+        font-family: "KingHwa_OldSong", "Noto Serif SC", serif;
+        line-height: 1.8;
+        opacity: 0.18;
+        pointer-events: none;
+        text-align: left;
+        transform: translateX(-50%);
+      }
+
+      .poem-background p {
+        margin: 0;
+        font-size: clamp(2.4rem, 5.2vw, 4.4rem);
+        white-space: nowrap;
+      }
+
+      .article-card {
+        overflow: hidden;
+        display: grid;
+        align-content: space-between;
+        min-height: 118px;
+        padding: 12px;
+      }
+
+      .article-card::before {
+        content: "";
+        position: absolute;
+        top: 12px;
+        bottom: 12px;
+        left: 0;
+        width: 3px;
+        border-radius: 999px;
+        background: linear-gradient(180deg, rgba(20, 125, 128, 0.68), rgba(173, 122, 33, 0.5));
+      }
+
+      .article-title {
+        display: -webkit-box;
+        overflow: hidden;
+        padding-right: 50px;
+        color: var(--ink);
+        font-size: 0.96rem;
+        font-weight: 900;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+      }
+
+      .article-avatar-mark {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        display: inline-flex;
+        width: 38px;
+        height: 38px;
+        border: 1px solid rgba(183, 68, 61, 0.28);
+        border-radius: 999px;
+        background:
+          linear-gradient(135deg, rgba(183, 68, 61, 0.16), rgba(20, 125, 128, 0.12)),
+          rgba(255, 255, 255, 0.76);
+        box-shadow: 0 8px 18px rgba(23, 38, 41, 0.12);
+        padding: 3px;
+        transform: rotate(2deg);
+      }
+
+      .article-avatar {
+        width: 100%;
+        height: 100%;
+        border-radius: inherit;
+        background: var(--mist);
+        object-fit: cover;
+      }
+
+      .article-meta {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 10px;
+        margin-top: 12px;
+        color: var(--muted);
+        font-size: 0.78rem;
+      }
+
+      .author {
+        display: inline-flex;
+        align-items: center;
+        min-width: 0;
+        gap: 7px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .date {
+        flex-shrink: 0;
+      }
+
+      .empty {
+        grid-column: 1 / -1;
+        border: 1px dashed rgba(24, 34, 38, 0.24);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.68);
+        color: var(--muted);
+        padding: 34px;
+        text-align: center;
+      }
+
+      .footer {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        margin-top: 20px;
+        color: var(--muted);
+        font-size: 0.86rem;
+      }
+
+      .footer a,
+      .source-links a {
+        color: var(--cyan-deep);
+        font-weight: 700;
+      }
+
+      @media (max-width: 900px) {
+        .masthead,
+        .dashboard {
+          grid-template-columns: 1fr;
+        }
+
+        .mode-switch {
+          width: 100%;
+          min-width: 0;
+        }
+
+        .metrics {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 560px) {
+        .shell {
+          width: min(100% - 20px, 1280px);
+          padding-top: 14px;
+        }
+
+        .masthead {
+          gap: 14px;
+        }
+
+        .mode-switch {
+          grid-template-columns: 1fr;
+        }
+
+        .metrics,
+        .content-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .board-head,
+        .footer {
+          align-items: stretch;
+          flex-direction: column;
+        }
+
+        .source-links {
+          flex-wrap: wrap;
+        }
+
+        .article-title {
+          padding-right: 42px;
+        }
+
+        .article-avatar-mark {
+          top: 9px;
+          right: 9px;
+          width: 32px;
+          height: 32px;
+          padding: 2px;
+        }
+
+        .poem-background {
+          bottom: calc(50% - 220px);
+          left: 54%;
+          opacity: 0.14;
+        }
+
+        .poem-background p {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <header class="masthead">
+        <div>
+          <span class="eyebrow"><i class="fa-solid fa-feather-pointed"></i> FRIEND CIRCLE LITE</span>
+          <h1>友链清册</h1>
+          <p class="mastnote" id="view-description">正在展开友链清册...</p>
+        </div>
+        <nav class="mode-switch" aria-label="数据视图切换">
+          <button class="mode-button active" data-view="links" type="button">
+            <i class="fa-solid fa-seedling"></i>
+            友链可达性
+          </button>
+          <button class="mode-button" data-view="articles" type="button">
+            <i class="fa-solid fa-newspaper"></i>
+            友链朋友圈
+          </button>
+        </nav>
+      </header>
+
+      <section class="dashboard">
+        <aside class="rail">
+          <section class="panel time-panel">
+            <span class="time-label">CURRENT VIEW TIME</span>
+            <strong class="time-value" id="footer-time">加载中...</strong>
+          </section>
+          <section class="metrics" id="summary"></section>
+          <section class="panel toolbar">
+            <div class="search-wrap">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input class="search" id="search" type="search" placeholder="搜索名称、链接、文章或作者" />
+            </div>
+            <div class="filters" id="filters"></div>
+          </section>
+        </aside>
+
+        <section class="board">
+          <header class="panel board-head">
+            <h2 class="board-title" id="section-title">友链可达性数据</h2>
+            <nav class="source-links" aria-label="数据源">
+              <a href="/link.json" target="_blank" rel="noopener noreferrer">link.json</a>
+              <a href="/all.json" target="_blank" rel="noopener noreferrer">all.json</a>
+              <a href="https://github.com/willow-god/Friend-Circle-Lite" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </nav>
+          </header>
+          <section class="content-grid" id="content"></section>
+        </section>
+      </section>
+
+      <footer class="footer">
+        <span>
+          Powered by
+          <a href="https://github.com/willow-god/Friend-Circle-Lite" target="_blank" rel="noopener noreferrer">Friend-Circle-Lite</a>
+        </span>
+        <a href="https://www.liushen.fun/" target="_blank" rel="noopener noreferrer">LiuShen</a>
+      </footer>
+    </main>
+
+    <div class="poem-background" aria-hidden="true">
+      <p>凤凰台上凤凰游，凤去台空江自流。</p>
+      <p>吴宫花草埋幽径，晋代衣冠成古丘。</p>
+      <p>三山半落青天外，二水中分白鹭洲。</p>
+      <p>总为浮云能蔽日，长安不见使人愁。</p>
+      <p>—— 节选自 李白《登金陵凤凰台》</p>
+    </div>
+
+    <script>
+      const state = {
+        view: "links",
+        filter: "unreachable",
+        keyword: "",
+        links: [],
+        articles: [],
+        linkStats: {},
+        articleStats: {},
+      };
+
+      const viewConfig = {
+        links: {
+          title: "友链可达性数据",
+          description: "记录站点连通、RSS 可抓取、反链与参考延迟，轻轻翻看便知近况。",
+          defaultFilter: "unreachable",
+          filters: [
+            ["unreachable", "不可达"],
+            ["reachable", "可达"],
+            ["crawlable", "可抓取"],
+            ["backlink", "有反链"],
+            ["all", "全部"],
+          ],
+        },
+        articles: {
+          title: "友链朋友圈数据",
+          description: "把友链最近的文章汇入同一张稿纸，按时间排列，保留每一位作者的来处。",
+          defaultFilter: "first24",
+          filters: [
+            ["first24", "前 24 条"],
+            ["today", "今日"],
+            ["week", "近 7 天"],
+            ["month", "近 30 天"],
+            ["all", "全部"],
+          ],
+        },
+      };
+
+      Promise.all([
+        fetchJSON("/link.json"),
+        fetchJSON("/all.json"),
+      ])
+        .then(([linkPayload, articlePayload]) => {
+          state.links = linkPayload.link_data || [];
+          state.linkStats = linkPayload.statistical_data || {};
+          state.articles = articlePayload.article_data || [];
+          state.articleStats = articlePayload.statistical_data || {};
+          render();
+        })
+        .catch((error) => {
+          document.getElementById("content").innerHTML =
+            `<div class="empty">数据加载失败：${escapeHTML(error.message)}</div>`;
+        });
+
+      document.querySelectorAll("[data-view]").forEach((button) => {
+        button.addEventListener("click", () => {
+          state.view = button.dataset.view;
+          state.filter = viewConfig[state.view].defaultFilter;
+          document.querySelectorAll("[data-view]").forEach((item) => item.classList.remove("active"));
+          button.classList.add("active");
+          render();
+        });
+      });
+
+      document.getElementById("search").addEventListener("input", (event) => {
+        state.keyword = event.target.value.trim().toLowerCase();
+        renderContent();
+      });
+
+      function fetchJSON(url) {
+        return fetch(url).then((response) => {
+          if (!response.ok) throw new Error(`${url} ${response.status}`);
+          return response.json();
+        });
+      }
+
+      function render() {
+        const config = viewConfig[state.view];
+        document.getElementById("view-description").textContent = config.description;
+        document.getElementById("section-title").textContent = config.title;
+        renderSummary();
+        renderFilters();
+        renderContent();
+        renderTime();
+      }
+
+      function renderSummary() {
+        const items = state.view === "links" ? linkMetrics() : articleMetrics();
+        document.getElementById("summary").innerHTML = items.map(([label, value, icon]) => `
+          <article class="panel metric">
+            <span class="metric-label"><i class="${icon}"></i>${escapeHTML(label)}</span>
+            <strong class="metric-value">${escapeHTML(value)}</strong>
+          </article>
+        `).join("");
+      }
+
+      function linkMetrics() {
+        const stats = state.linkStats;
+        return [
+          ["友链总数", stats.link_total_num ?? state.links.length, "fa-solid fa-users"],
+          ["可达友链", stats.link_reachable_num ?? state.links.filter((item) => item.reachable).length, "fa-solid fa-circle-check"],
+          ["可抓取 RSS", stats.crawl_allowed_num ?? state.links.filter((item) => item.crawlable).length, "fa-solid fa-rss"],
+          ["有反链", stats.has_author_link_num ?? state.links.filter((item) => item.has_backlink).length, "fa-solid fa-heart-circle-check"],
+        ];
+      }
+
+      function articleMetrics() {
+        const stats = state.articleStats;
+        const authors = new Set(state.articles.map((item) => item.author).filter(Boolean));
+        return [
+          ["友链总数", stats.friends_num ?? state.links.length, "fa-solid fa-users"],
+          ["活跃站点", stats.active_num ?? authors.size, "fa-solid fa-bolt"],
+          ["文章数量", stats.article_num ?? state.articles.length, "fa-solid fa-newspaper"],
+          ["异常站点", stats.error_num ?? 0, "fa-solid fa-triangle-exclamation"],
+        ];
+      }
+
+      function renderFilters() {
+        const filters = viewConfig[state.view].filters;
+        document.getElementById("filters").innerHTML = filters.map(([key, label]) => `
+          <button class="filter-button ${key === state.filter ? "active" : ""}" data-filter="${key}" type="button">${label}</button>
+        `).join("");
+        document.querySelectorAll("[data-filter]").forEach((button) => {
+          button.addEventListener("click", () => {
+            state.filter = button.dataset.filter;
+            renderFilters();
+            renderContent();
+          });
+        });
+      }
+
+      function renderContent() {
+        if (state.view === "links") {
+          renderLinks();
+        } else {
+          renderArticles();
+        }
+      }
+
+      function renderLinks() {
+        const links = state.links
+          .filter(matchKeywordForLink)
+          .filter(matchLinkFilter)
+          .sort((left, right) => linkRank(left) - linkRank(right));
+        document.getElementById("content").innerHTML = links.map(renderLinkCard).join("") ||
+          `<div class="empty">当前条件下没有友链数据</div>`;
+      }
+
+      function renderLinkCard(link) {
+        const status = link.reachable ? "good" : "bad";
+        const statusText = link.reachable ? "可达" : "不可达";
+        const crawlText = link.crawlable ? "可抓取" : "不可抓取";
+        const crawlClass = link.crawlable ? "good" : "warn";
+        const backlinkText = link.has_backlink === true ? "有反链" : link.has_backlink === false ? "无反链" : "未检测";
+        const backlinkClass = link.has_backlink === true ? "good" : link.has_backlink === false ? "bad" : "";
+        const latencyText = formatLatency(link.latency);
+        const failCount = Number(link.fail_count || 0);
+        return `
+          <article class="link-card">
+            <div class="link-main">
+              <img class="avatar" src="${escapeAttr(link.avatar || "./favicon.ico")}" alt="" loading="lazy" />
+              <div>
+                <a class="name" href="${escapeAttr(link.link)}" target="_blank" rel="noopener noreferrer">${escapeHTML(link.name)}</a>
+                <a class="url" href="${escapeAttr(link.link)}" target="_blank" rel="noopener noreferrer">${escapeHTML(link.link)}</a>
+              </div>
+            </div>
+            <div class="badges">
+              <span class="icon-badge ${status}" title="站点状态：${escapeAttr(statusText)}"><i class="fa-solid fa-signal"></i></span>
+              <span class="icon-badge ${crawlClass}" title="RSS 状态：${escapeAttr(crawlText)}"><i class="fa-solid fa-rss"></i></span>
+              <span class="icon-badge ${backlinkClass}" title="反链状态：${escapeAttr(backlinkText)}"><i class="fa-solid fa-heart"></i></span>
+              <span class="icon-badge" title="参考延迟：${escapeAttr(latencyText)}"><i class="fa-regular fa-clock"></i></span>
+              <span class="icon-badge" title="连续失败次数：${escapeAttr(failCount)} 次"><i class="fa-solid fa-rotate"></i></span>
+            </div>
+          </article>
+        `;
+      }
+
+      function renderArticles() {
+        let articles = state.articles
+          .filter(matchKeywordForArticle)
+          .filter(matchArticleFilter);
+        if (state.filter === "first24") {
+          articles = articles.slice(0, 24);
+        }
+        document.getElementById("content").innerHTML = articles.map(renderArticleCard).join("") ||
+          `<div class="empty">当前条件下没有友圈文章</div>`;
+      }
+
+      function renderArticleCard(article) {
+        return `
+          <article class="article-card">
+            <span class="article-avatar-mark" title="作者头像：${escapeAttr(article.author || "未知作者")}">
+              <img class="article-avatar" src="${escapeAttr(article.avatar || "./favicon.ico")}" alt="" loading="lazy" />
+            </span>
+            <a class="article-title" href="${escapeAttr(article.link)}" target="_blank" rel="noopener noreferrer">${escapeHTML(article.title || "无标题")}</a>
+            <div class="article-meta">
+              <span class="author"><i class="fa-solid fa-feather-pointed"></i>${escapeHTML(article.author || "未知作者")}</span>
+              <span class="date"><i class="fa-regular fa-clock"></i> ${escapeHTML(article.created || "")}</span>
+            </div>
+          </article>
+        `;
+      }
+
+      function matchKeywordForLink(link) {
+        if (!state.keyword) return true;
+        return [link.name, link.link, link.link_page].some((value) =>
+          String(value || "").toLowerCase().includes(state.keyword)
+        );
+      }
+
+      function matchKeywordForArticle(article) {
+        if (!state.keyword) return true;
+        return [article.title, article.author, article.link].some((value) =>
+          String(value || "").toLowerCase().includes(state.keyword)
+        );
+      }
+
+      function matchLinkFilter(link) {
+        if (state.filter === "reachable") return link.reachable;
+        if (state.filter === "crawlable") return link.crawlable;
+        if (state.filter === "unreachable") return !link.reachable;
+        if (state.filter === "backlink") return link.has_backlink === true;
+        return true;
+      }
+
+      function matchArticleFilter(article) {
+        if (state.filter === "all" || state.filter === "first24") return true;
+        const date = parseArticleDate(article.created);
+        if (!date) return false;
+        const now = new Date();
+        const diffDays = (now - date) / 86400000;
+        if (state.filter === "today") return diffDays >= 0 && diffDays < 1;
+        if (state.filter === "week") return diffDays >= 0 && diffDays <= 7;
+        if (state.filter === "month") return diffDays >= 0 && diffDays <= 30;
+        return true;
+      }
+
+      function parseArticleDate(value) {
+        if (!value) return null;
+        const date = new Date(String(value).replace(" ", "T"));
+        return Number.isNaN(date.getTime()) ? null : date;
+      }
+
+      function linkRank(link) {
+        if (!link.reachable) return 0;
+        if (!link.crawlable) return 1;
+        return 2;
+      }
+
+      function formatLatency(value) {
+        const latency = Number(value);
+        if (!Number.isFinite(latency)) return "无延迟";
+        return `${latency.toFixed(2)} 秒`;
+      }
+
+      function renderTime() {
+        const time = state.view === "links"
+          ? state.linkStats.link_last_checked_time
+          : state.articleStats.last_updated_time;
+        document.getElementById("footer-time").textContent = time || "暂无更新时间";
+      }
+
+      function escapeHTML(value) {
+        return String(value || "").replace(/[&<>"']/g, (char) => ({
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#39;",
+        }[char]));
+      }
+
+      function escapeAttr(value) {
+        return escapeHTML(value);
+      }
+    </script>
+  </body>
+</html>
